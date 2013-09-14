@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+ZNCDATA="/znc-data"
+
+# Create znc config if it doesn't exist
+if [ ! -f "${ZNCDATA}/configs/znc.conf" ]; then
+  mkdir -p "${ZNCDATA}/configs"
+  cp /src/znc.conf.default "${ZNCDATA}/configs/znc.conf"
+fi
+
+if [ ! -f "${ZNCDATA}/znc.pem" ]; then
+  znc --makepem -d "$ZNCDATA"
+fi
+
+exec znc -f -d "$ZNCDATA"
