@@ -1,5 +1,5 @@
 docker-znc
-##########
+==========
 
 ### How to use
 
